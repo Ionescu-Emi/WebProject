@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title> Register</title>
+    <link rel="stylesheet" href="./register_style.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
+    <header>
+        <nav class="menu">
+            <ul class="menu_items">
+                <li class="menu_item"><a href="home.php">HOMEPAGE</li>
+                <li class="menu_item"><a href="">REGISTER</li>
+                <li class="menu_item"><a href="">LOGIN</a></li>
+                <li class="menu_item"><a href="">ABOUT US</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="register_section">
+        <h1>REGISTER</h1>
+
+        <form class="register_form" method="post" action="register.php">
+            <h2 class="border_line"></h2>
+
+            <label name="label" for="username">name:</label>
+            <input type="username" name="username" class="register_form_text" placeholder="your name" />
+
+            <label for="password">password:</label>
+            <input type="password" name="password" class="register_form_text" placeholder="your password" />
+
+            <label for="email">email:</label>
+            <input type="email" name="email" class="register_form_text" placeholder="your email" />
+
+            <button type="submit" name="register" class="register_btn"> Submit </button>
+
+        </form>
+    </div>
+</body>
+<?php
+
+</html>
