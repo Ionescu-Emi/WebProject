@@ -1,28 +1,24 @@
 * {
     margin: 0;
     padding: 0;
-    text-decoration: none;
     font-family: "montserrat", sans-serif;
-    
+  
 }
 
-.new_visit_section {
+.contact_section,.register_section {
     background: #717D7E;
     padding: 40px 0;
     background-size: cover;
+    height:80vh;
 }
 
-.new_visit_section h1 {
+.contact_section h1,.register_section h1 {
     text-align: center;
     color: #ddd;
     margin-bottom: 20px;
 }
-h4{
-    margin-top:8px;
-    text-align:left;
-    color: #ddd;  
-}
-.new_visit_section label {
+
+.contact_section label,.register_section label {
     text-align: center;
     color: #ddd;
     left: 10px;
@@ -37,24 +33,23 @@ h4{
     margin-bottom: 20px;
 }
 
-.new_visit_form {
+.contact_form,.register_form{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     margin: auto;
     max-width: 500px;
-    padding: 10px 10px;
+    padding: 10px 10px 10px 10px;
     overflow: hidden;
 }
 
-.new_visit_form_text {
+.contact_form_text,.register_form_text {
     display: block;
     width: 70vw;
     box-sizing: border-box;
     border: 0;
     margin: auto;
-    
     background: #111;
     padding: 20px 20px;
     outline: none;
@@ -63,11 +58,11 @@ h4{
     border-radius: 5px;
 }
 
-.new_visit_form_text:hover {
+.contact_form_text:hover ,.register_form_text:hover{
     box-shadow: 0 2px 10px 4px #34495e;
 }
 
-.submit_btn {
+.contact_btn ,.register_btn{
     float: center;
     width: 10vw;
     border: 0;
@@ -80,66 +75,9 @@ h4{
     transition: 0.5s;
 }
 
-.photo_btn {
-    float: center;
-    width: 15vw;
-    height: 40px;
-    border: 0;
-    margin-top: 10px;
-    background: #34495e;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-
-.photo_btn:hover {
+.contact_btn:hover,.register_btn:hover{
     background: #2980b9;
     box-shadow: 0 2px 10px 4px #34495e;
-    width:200px;
-}
-
-.submit_btn:hover,select:hover,.menuBtn:hover{
-    background: #2980b9;
-    box-shadow: 0 2px 10px 4px #34495e;
-}
-
-.meeting_data,.meeting_time {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 500px;
-    padding: 10px 10px;
-}
-
-.select_area {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.time_cell{
-    display:flex;
-    flex-direction:column;
-}
-.select_time_area{
-    display:flex;
-    flex-direction:row;
-    align-content:flex-start;
-    justify-content:flex-start;
-}
-select{
-   
-    
-    font-size:1em;
-    padding:0.7em 1.5em;
-    background:#34495e;
-    color:white;
-    border:0;
-    border-radius:5px;
-   
-appearance:none;
-transition:0.5s;
 }
 footer{
     display:flex;
@@ -148,16 +86,19 @@ footer{
     
 }
 .social_menu { 
-    display:flex;
-    justify-content:center;
-    flex-wrap:nowrap;
-    position:absolute;
-    width:100vw;
-    padding:0;
-    margin:0;
-    background-color:#28292c;
-    /*transform:translate(-50%,-50%);
-*/
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  flex-wrap:nowrap;
+  position:absolute;
+  width:100vw;
+  
+  padding:0;
+  margin:0;
+  margin-bottom:0;
+  background-color:#28292c;
+  
+
 }
    
   
@@ -202,9 +143,6 @@ footer{
   .media_button:nth-child(4) a:hover{
     background-color:#55acee;
   }
-
-
-  
   .menu_item:hover{
     background: #2980b9;
     
