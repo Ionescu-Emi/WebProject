@@ -134,11 +134,50 @@ function loginUser($conn,$name,$password){
     }
     else if($checkPassword==true){
         session_start();
-
-        //$_SESSION["userId"]=$nameExists["usersId"];
+         
+        
         $_SESSION["userName"]=$nameExists["usersName"];
         header("location:../homepage.php");
         exit();
     }
+}
+
+function emptyInputDelete($nameDelete){
+    $result=false;
+    if(empty($nameDelete)){
+     $result=true;
+
+    }
+    else{
+        $result=false;
+    }
+    return $result;
+}
+
+function deleteUser($conn,$nameDelete){
+    $admin="admin";
+if($nameDelete!==$admin){
+    $sql="DELETE FROM users WHERE usersName=?;";
+    $statement=mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($statement,$sql))
+    {
+
+        header("location:../admin_page.php?error=statementFailed");
+        exit();
+    }
+    
+
+    mysqli_stmt_bind_param($statement,"s",$nameDelete);
+    mysqli_stmt_execute($statement);
+
+
+mysqli_stmt_close($statement);
+header("location:../admin_page.php?error=none");
+exit();
+}
+else{
+    header("location:../admin_page.php?error=deleteAdmin");
+    exit();
+}
 }
 ?>
