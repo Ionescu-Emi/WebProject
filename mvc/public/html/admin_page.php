@@ -62,22 +62,42 @@ session_start();
             </ul>
         </nav>
         <div class="contact_section">
-            <h1>CONTACT US</h1>
-            <form class="contact_form" method="post" action="mail_handler.php">
-                <div class="border_line"></div>
-                <label >name:</label>
-                <input type="text" name="name" class="contact_form_text" placeholder="your name">
-                <label >phone:</label>
-                <input type="number" name="phone" class="contact_form_text" placeholder="your phone" >
-                <label >email:</label>
-                <input type="email" name="email" class="contact_form_text" placeholder="your email" >
-                <label >message::</label>
-                <textarea class="contact_form_text" name="msg" placeholder="Your Message"></textarea>         
-                <button type="submit" name="submit" value="send" class="contact_btn"> Submit</button>
+        <form class="contact_form" action="submit/admin_page.sub.php" method="post">
+
+       <label >delete user:</label>
+            <input type="text" name="nameDelete" class="register_form_text" placeholder="name of user you want to delete" />
+             
             
-                  
-            </form>
-        </div>
+            <button type="submit" name="submit_delete" class="register_btn"> Delete </button>
+
+            <?php
+   
+   if(isset($_GET["error"])){
+       if($_GET["error"]=="emptyinput"){
+           echo "<h3>Empty field!</h3>";
+       }
+       else if($_GET["error"]=="userNotExist")
+       {
+        echo "<h3>User doesnt exist!</h3>";
+       } 
+       else if($_GET["error"]=="statementFailed")
+       {
+        echo "<h3>User deleted!</h3>";
+       }
+       else if($_GET["error"]=="deleteAdmin")
+       {
+        echo "<h3>You cant delete yourself!</h3>";
+       }
+     
+       else if($_GET["error"]=="none")
+       {
+        echo "<h3>User deleted</h3>";
+       }
+   }
+   
+   ?>
+        </form>
+    </div>
         
             <div class="social_menu">
                 <div class="media_button">

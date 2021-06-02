@@ -10,6 +10,42 @@ session_start();
         <title>Homepage</title>
         <link rel="stylesheet" href="./css/homepage.css" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+ #button_quote{
+    float: center;
+    width: 10vw;
+    border: 0;
+    margin-top: 10px;
+    background: #34495e;
+    color: #fff;
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.quote2{
+    display:block;
+    position:relative;
+    width:50%;
+    margin:5rem auto;
+    
+    padding:0.5rem;
+    font-size:1.5rem;
+    font-style:italic;
+    line-height:1.5rem;
+    font-family:'Times',serif;
+    color:#ddd;
+}
+#author{
+    display:block;
+    line-height:1.2;
+    font-style:normal;
+   font-size:0.8em;
+    color:#28292c;
+    
+}
+
+        </style>
     </head>
     <body>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,600" rel="stylesheet" type="text/css">
@@ -25,26 +61,31 @@ session_start();
                         <h5>NEW VISIT</h5>
                     </a>
                 </li>
-                <li class="menu_item">
-                    <a href="register.php">
-                        <h5>REGISTER</h5>
-                    </a>
-                </li>
+ 
                 
             <?php
     
+             $adminName="admin";
              if(isset($_SESSION["userName"]))
              {
                  echo "<li class='menu_item'><a href='submit/logout.sub.php'> <h5>LOGOUT</h5> </a> </li>";
              
+                  if($_SESSION["userName"]==$adminName)
+             {
+                echo "<li class='menu_item'><a href='admin_page.php'> <h5>ADMIN PAGE</h5> </a> </li>";
+               
+             }
                 }
                 else
                 {
+                    echo "<li class='menu_item'><a href='register.php'> <h5>REGISTER</h5> </a> </li>";
+             
                     echo "<li class='menu_item'><a href='login.php'> <h5>LOGIN</h5> </a> </li>";
              
-
-             }
             
+            
+             }
+             
             ?>
                 <li class="menu_item">
                     <a href="contact.php">
@@ -87,7 +128,26 @@ session_start();
                         Debbie Ford
                     </span>
                 </div>
+
+                
+                <div class="quote2">
+                 <div id="quote">
+                Don't forget: life is a race, if you don't run fast, you'll get trampled
+                 </div>
+            <div id="author">
+                Author
             </div>
+                <button class="contact_btn" id="button_quote">Random quote</button>
+
+                <script src="script3.js"></script>
+
+            </div>
+
+           
+
+            </div>
+             
+          
             <div class="gallery_container">
                 <div class="gallery_images">
                     <a href="images/img-1.png" class="img-1">
@@ -117,6 +177,7 @@ session_start();
                 </div>
             </div>
         
+
         </div>
             <div class="social_menu">
                 <div class="media_button">

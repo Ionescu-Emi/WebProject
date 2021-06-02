@@ -25,18 +25,22 @@ session_start();
                             <h5>NEW VISIT</h5>
                         </a>
                     </li>
-                    <li class="menu_item">
-                        <a href="register.php">
-                            <h5>REGISTER</h5>
-                        </a>
-                    </li>
+                   
                     <?php
     
-    if(isset($_SESSION["userName"]))
-    {
-        echo "<li class='menu_item'><a href='submit/logout.sub.php'> <h5>LOGOUT</h5> </a> </li>";
-    
-       }
+    $adminName="admin";
+             if(isset($_SESSION["userName"]))
+             {
+                 echo "<li class='menu_item'><a href='submit/logout.sub.php'> <h5>LOGOUT</h5> </a> </li>";
+             
+                  if($_SESSION["userName"]==$adminName)
+             {
+                echo "<li class='menu_item'><a href='register.php'> <h5>REGISTER</h5> </a> </li>";
+             
+                echo "<li class='menu_item'><a href='admin_page.php'> <h5>ADMIN PAGE</h5> </a> </li>";
+               
+             }
+                }
        else
        {
            echo "<li class='menu_item'><a href='login.php'> <h5>LOGIN</h5> </a> </li>";

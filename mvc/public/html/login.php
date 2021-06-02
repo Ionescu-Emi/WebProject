@@ -65,7 +65,7 @@ session_start();
              
             
             
-            <button type="submit" name="submit" class="register_btn"> Submit </button>
+            <button type="submit" name="submit" class="register_btn"> Login </button>
             <?php
    
    if(isset($_GET["error"])){
