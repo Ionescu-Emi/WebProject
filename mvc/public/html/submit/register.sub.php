@@ -8,6 +8,7 @@ if(isset($_POST["submit"])){
    $password=$_POST["password"];
    $password_repeat=$_POST["password_repeat"];
 
+
    require_once 'dbh.sub.php';
    require_once 'functions.sub.php';
 
@@ -39,6 +40,7 @@ if(nameExists($conn,$name) !==false){
 }
 
 createUser($conn,$name,$email,$password);
+
 
 }
 else{
