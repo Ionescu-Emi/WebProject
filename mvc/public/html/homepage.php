@@ -121,6 +121,8 @@ include_once 'submit/dbh.sub.php';
             <h1>HOMEPAGE</h1>
             
             <div class="border_line"></div>
+
+            
             <div class="quote_section">
                 <div class="quote">
                     <p>

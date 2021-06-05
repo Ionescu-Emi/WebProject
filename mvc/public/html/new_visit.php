@@ -80,8 +80,6 @@ session_start();
                     class="new_visit_form_text"
                     placeholder="detained name"
                 >
-                <label >your picture:</label>
-                <button type="submit" name="button_photo" class="photo_btn">Upload your photo</button>
                 <div class="meeting_data">
                     <div class="select_area">
                         <label >Your relationship with the detained:</label>

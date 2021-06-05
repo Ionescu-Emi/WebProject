@@ -67,7 +67,7 @@ session_start();
     <div class="register_section">
         <h1>REGISTER</h1>
 
-        <form class="register_form" action="submit/register.sub.php" method="post">
+        <form class="register_form" action="submit/register.sub.php" method="post" enctype="multipart/form-data">
             <div class="border_line"></div>
 
             <label  >name:</label>
@@ -82,7 +82,8 @@ session_start();
             <label >retype password:</label>
             <input type="password" name="password_repeat" class="register_form_text" placeholder="retype your password" />
              
-            
+            <label >your picture:</label>
+            <input type="file" name="file" class="">   
             <button type="submit" name="submit" class="register_btn"> Submit </button>
 
        
@@ -110,7 +111,19 @@ session_start();
        {
         echo "<h3>Something went wrong</h3>";
        }
-       else if($_GET["error"]=="none")
+       else if($_GET["error"]=="errorUploading")
+       {
+        echo "<h3>Error uploading</h3>";
+       }else if($_GET["error"]=="fileTypeNotAllowed")
+       {
+        echo "<h3>file type not allowed</h3>";
+       
+    }else if($_GET["error"]=="emptyphoto")
+    {
+     echo "<h3>upload your photo!</h3>";
+    
+ }
+    else if($_GET["error"]=="none")
        {
         echo "<h3>Account created</h3>";
        }

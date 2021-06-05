@@ -85,6 +85,18 @@ footer{
    
     
 }
+.image_user{
+  height:100px;
+  width:100px;
+  border-radius: 50px;
+}
+.register_section{
+  height:40em;
+}
+.contact_section{
+  height:150em;
+}
+
 .social_menu { 
   display:flex;
   justify-content:center;
@@ -92,7 +104,7 @@ footer{
   flex-wrap:nowrap;
   position:absolute;
   width:100vw;
-  
+ 
   padding:0;
   margin:0;
   margin-bottom:0;

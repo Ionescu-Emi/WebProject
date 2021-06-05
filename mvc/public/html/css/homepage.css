@@ -19,10 +19,15 @@
     color: #ddd;
     margin-bottom: 20px;
 }
-h4{
+h2{
     margin-top:8px;
     text-align:left;
     color: #ddd;  
+}
+.video_title{
+    margin-top:8px;
+    text-align:left;
+    color: rgb(38, 3, 134);  
 }
 .homepage label {
     text-align: center;
@@ -162,6 +167,19 @@ h5{
     
 }
 .quote{
+    display:block;
+    position:relative;
+    width:50%;
+    margin:5rem auto;
+    
+    padding:0.5rem;
+    font-size:1.5rem;
+    font-style:italic;
+    line-height:1.5rem;
+    font-family:'Times',serif;
+    color:#ddd;
+}
+.quote2{
     display:block;
     position:relative;
     width:50%;
@@ -357,4 +375,60 @@ transition:opacity 0.5s;
         height:30rem;
         min-height:30rem;
     }
+}
+
+#button_quote,.contact_btn ,.register_btn{
+    float: center;
+    width: 10vw;
+    border: 0;
+    margin-top: 10px;
+    background: #34495e;
+    color: #fff;
+    padding: 12px 50px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.contact_btn:hover,.register_btn:hover{
+    background: #2980b9;
+    box-shadow: 0 2px 10px 4px #34495e;
+}
+.rss_section{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-around;
+    flex-direction:column;
+
+    border:0.7rem solid black;
+    background-color: #fff;
+margin-left:100px;
+margin-right:100px;
+margin-top:20px;
+
+}
+.video_box{
+    border:0.1rem solid black;
+    border-radius:5px;
+    background:rgb(207, 203, 203);
+    width:95%;
+    margin-bottom:5px;
+    margin-left:2px;
+}
+.register_form_text {
+    display: block;
+    width: 70vw;
+    box-sizing: border-box;
+    border: 0;
+    margin: auto;
+    background: #111;
+    padding: 20px 20px;
+    outline: none;
+    color: #ddd;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.register_form_text:hover{
+    box-shadow: 0 2px 10px 4px #34495e;
 }

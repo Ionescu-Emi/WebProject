@@ -62,7 +62,7 @@ include_once 'submit/dbh.sub.php';
             </ul>
         </nav>
         <div class="contact_section">
-        <form class="contact_form" action="submit/admin_page.sub.php" method="post">
+        <form class='contact_form' action="submit/admin_page.sub.php" method="post">
         <h1 >Details about users:</h1>
             
         
@@ -78,8 +78,12 @@ $resultCheck=mysqli_fetch_assoc($result);
 if($resultCheck >0 ){
 
     while($row=mysqli_fetch_assoc($result)){
+        echo "<img src='submit/uploads/".$row['usersName'].".jpg' class='image_user'>";
+   
+        
         echo  "<h5> ID: ".$row['usersId']." ,    Name: ".$row['usersName']." ,    Email: ".$row['usersEmail']."</h5><br>";
-    }
+    
+        }
 }
 
 
