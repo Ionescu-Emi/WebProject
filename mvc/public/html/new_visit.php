@@ -35,14 +35,14 @@ session_start();
              
                   if($_SESSION["userName"]==$adminName)
              {
-                echo "<li class='menu_item'><a href='register.php'> <h5>REGISTER</h5> </a> </li>";
-             
+               
                 echo "<li class='menu_item'><a href='admin_page.php'> <h5>ADMIN PAGE</h5> </a> </li>";
                
              }
                 }
        else
-       {
+       { echo "<li class='menu_item'><a href='register.php'> <h5>REGISTER</h5> </a> </li>";
+             
            echo "<li class='menu_item'><a href='login.php'> <h5>LOGIN</h5> </a> </li>";
     
 
@@ -64,17 +64,24 @@ session_start();
         
         <div class="new_visit_section">
             <h1>NEW VISIT</h1>
-            <form class="new_visit_form" method="post" action="new_visit.php">
+            <form class="new_visit_form" action="submit/new_visit.sub.php" method="post" >
                 <div class="border_line"></div>
                 <label > full name:</label>
                 <input
                     type="text"
-                    name="username"
+                    name="name"
                     class="new_visit_form_text"
                     placeholder="your  full name"
                 >
+                <label > detained name:</label>
+                <input
+                    type="text"
+                    name="detained_name"
+                    class="new_visit_form_text"
+                    placeholder="detained name"
+                >
                 <label >your picture:</label>
-                <button type="submit" name="photo" class="photo_btn">Upload your photo</button>
+                <button type="submit" name="button_photo" class="photo_btn">Upload your photo</button>
                 <div class="meeting_data">
                     <div class="select_area">
                         <label >Your relationship with the detained:</label>
@@ -168,14 +175,41 @@ session_start();
                 </div>
                 <div>
                     <h4>Possible objects given to the detained:</h4>
-                    <textarea class="new_visit_form_text" placeholder="object list"></textarea>
+                    <textarea name="possible_objects" class="new_visit_form_text" placeholder="object list"></textarea>
                 </div>
                 <div>
                     <h4>Witnesses at the meeting:</h4>
-                    <textarea class="new_visit_form_text" placeholder="witness list"></textarea>
+                    <textarea  name="witness_list" class="new_visit_form_text" placeholder="witness list"></textarea>
                 </div>
-                <button type="submit" name="register" class="submit_btn"> Submit</button>
-            </form>
+              
+              
+                <button type="submit" name="button_visit" class="submit_btn"> Submit</button>
+            
+            
+                <?php
+   
+   if(isset($_GET["error4"])){
+       if($_GET["error4"]=="emptyinputs"){
+           echo "<h3>Empty fields!</h3>";
+       }
+       else if($_GET["error4"]=="detainedNotExist")
+       {
+        echo "<h3>Detained doesnt exist!</h3>";
+       }
+       else if ($_GET["error4"]=="statementFailed")
+       {
+        echo "<h3>Passwords dont match</h3>";
+       }
+       else if($_GET["error4"]=="none")
+       {
+        echo "<h3>Visit created!</h3>";
+       }
+      
+   }
+   
+   ?>
+</form>
+           
         </div>
         <footer>
             <div class="social_menu">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'submit/dbh.sub.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -63,40 +63,121 @@ session_start();
         </nav>
         <div class="contact_section">
         <form class="contact_form" action="submit/admin_page.sub.php" method="post">
+        <h1 >Details about users:</h1>
+            
+        
+<?php
 
+
+ // echo "<p>ok</p>";  
+
+$sql="SELECT * FROM users;";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+        echo  "<h5> ID: ".$row['usersId']." ,    Name: ".$row['usersName']." ,    Email: ".$row['usersEmail']."</h5><br>";
+    }
+}
+
+
+
+
+?>
+ <div>
        <label >delete user:</label>
+            
             <input type="text" name="nameDelete" class="register_form_text" placeholder="name of user you want to delete" />
              
             
             <button type="submit" name="submit_delete" class="register_btn"> Delete </button>
-
+</div>
             <?php
    
-   if(isset($_GET["error"])){
-       if($_GET["error"]=="emptyinput"){
+   if(isset($_GET["error2"])){
+       if($_GET["error2"]=="emptyinput"){
            echo "<h3>Empty field!</h3>";
        }
-       else if($_GET["error"]=="userNotExist")
+       else if($_GET["error2"]=="userNotExist")
        {
         echo "<h3>User doesnt exist!</h3>";
        } 
-       else if($_GET["error"]=="statementFailed")
+       else if($_GET["error2"]=="statementFailed")
        {
         echo "<h3>User deleted!</h3>";
        }
-       else if($_GET["error"]=="deleteAdmin")
+       else if($_GET["error2"]=="deleteAdmin")
        {
         echo "<h3>You cant delete yourself!</h3>";
        }
      
-       else if($_GET["error"]=="none")
+       else if($_GET["error2"]=="none")
        {
         echo "<h3>User deleted</h3>";
        }
    }
    
    ?>
+    <h1 >Details about visits:</h1>
+   <?php
+
+
+ // echo "<p>ok</p>";  
+$id=0;
+$sql="SELECT * FROM visits;";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+       $id++;
+        echo  "<h5> ID: ".$row['visitId']." ,    Name: ".$row['name_visitor']." , detained name: ".$row['detained_name']." , relationship: ".$row['relationship'].
+        " , nature: ".$row['nature']." , duration ".$row['duration']." , meeting date: ".$row['meeting_date']." , possible objects: ".$row['possible_objects']." , witness list: ".$row['witness_list']."</h5><br>";
+    }
+}
+
+
+
+
+?>
+  <label >delete visit:</label>
+            
+            <input type="text" name="DeleteVisitId" class="register_form_text" placeholder="ID of visit you want to delete" />
+             
+            
+            <button type="submit" name="submit_delete_visit" class="register_btn"> Delete </button>
+           
+           
+            <h1 >Details about detained:</h1>
+            <?php
+
+
+// echo "<p>ok</p>";  
+$id=0;
+$sql="SELECT * FROM detained;";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+   while($row=mysqli_fetch_assoc($result)){
+      $id++;
+       echo  "<h5> ID: ".$row['detainedId']." , detained name: ".$row['detained_name']." , CNP: ".$row['CNP'].
+       " , imprison date: ".$row['imprison_date']." , release date: ".$row['release_date']." , crime: ".$row['crime']." , incidents: ".$row['incidents']." , condemnation: ".$row['condemnation']."</h5><br>";
+   }
+}
+
+
+
+
+?>
+
         </form>
+
+        
     </div>
         
             <div class="social_menu">

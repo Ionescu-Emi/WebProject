@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'submit/dbh.sub.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,10 @@ session_start();
         <meta charset="utf-8">
         <title>Homepage</title>
         <link rel="stylesheet" href="./css/homepage.css" type="text/css">
+       
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
+      
+       <style>
  #button_quote{
     float: center;
     width: 10vw;
@@ -44,7 +46,23 @@ session_start();
     color:#28292c;
     
 }
+.register_form_text {
+    display: block;
+    width: 30vw;
+    box-sizing: border-box;
+    border: 0;
+    margin: 20px;
+    background: #111;
+    padding: 20px 20px;
+    outline: none;
+    color: #ddd;
+    transition: 0.5s;
+    border-radius: 5px;
+}
 
+.register_form_text:hover{
+    box-shadow: 0 2px 10px 4px #34495e;
+}
         </style>
     </head>
     <body>
@@ -178,7 +196,86 @@ session_start();
             </div>
         
 
-        </div>
+   <h2 id="h2_latest_videos">Latest prison vlog videos:</h2>         
+<div class="rss_section">
+
+<?php
+
+
+$url="https://www.youtube.com/feeds/videos.xml?channel_id=UCzmkeda2XiYpETOP5MjotrQ";
+$xml=simplexml_load_file($url);
+
+for($i=0;$i<10;$i++){
+
+echo "<div class=video_box>";
+
+$id=$xml->entry[$i]->id;
+//$id=str_replace("https://www.youtube.com/watch?v=","",$id);
+$title=$xml->entry[$i]->title;
+$name=$xml->entry[$i]->author->name;
+$uri=$xml->entry[$i]->author->uri;
+$link=$xml->entry[$i]->link;
+$published=$xml->entry[$i]->published;
+//accesam nodurile din xml file
+
+echo "<h4 class='video_title'>".$title."</h4><br>";
+
+echo "<p>".$name.",published at: ".$published."</p>";
+
+//echo "<a href='https://www.youtube.com/watch?v=".$id."'>video link</a><br>";
+
+echo "<a href=".$uri.">link</a><br>";
+
+
+echo "</div>";
+}
+
+
+
+?>
+
+</div>
+
+<div id="comments">
+
+<?php
+
+
+ // echo "<p>ok</p>";  
+
+$sql="SELECT * FROM comments;";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+        echo  "<h3> Comment: ".$row['msg']." ,</h3>   <br><p>by ".$row['author']."</p><br>";
+    }
+}
+
+
+if(isset($_SESSION["userName"]))
+{
+    echo "<form class='register_form' action='submit/comment.sub.php' method='post'>
+    <label  >post your comment:</label>
+            <input type='text' name='author' class='register_form_text' placeholder='your name' />
+            <input type='text' name='message' class='register_form_text' placeholder='your comment' />
+            
+            <button type='submit' name='submit_comment' id='button_quote'> Submit </button>
+
+    </form>";
+
+}
+
+
+?>
+
+
+</div>
+
+
+</div>
             <div class="social_menu">
                 <div class="media_button">
                     <a href="https://www.facebook.com/thedark.archer.5/">
