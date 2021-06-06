@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'submit/dbh.sub.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -196,7 +196,7 @@ session_start();
        }
        else if ($_GET["error4"]=="statementFailed")
        {
-        echo "<h3>Passwords dont match</h3>";
+        echo "<h3>Statement failed</h3>";
        }
        else if($_GET["error4"]=="none")
        {
@@ -207,6 +207,26 @@ session_start();
    
    ?>
 </form>
+
+<?php
+
+if(isset($_SESSION["userName"])){
+    $sql="SELECT * FROM visits WHERE relationship='relative';";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+  while($row=mysqli_fetch_assoc($result)){
+      $row2=$row[1];
+       echo "<h5>number of visits with relatives:".$row2."</h5>";
+    }  
+ }
+
+}
+
+?>
+
            
         </div>
         <footer>

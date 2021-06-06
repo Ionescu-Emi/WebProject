@@ -62,6 +62,7 @@ include_once 'submit/dbh.sub.php';
             </ul>
         </nav>
         <div class="contact_section">
+
         <form class='contact_form' action="submit/admin_page.sub.php" method="post">
         <h1 >Details about users:</h1>
             
@@ -97,7 +98,11 @@ if($resultCheck >0 ){
              
             
             <button type="submit" name="submit_delete" class="register_btn"> Delete </button>
-</div>
+
+<button type="submit" name="download_all_users" class="register_btn"> Download all users</button>
+
+        </div>
+
             <?php
    
    if(isset($_GET["error2"])){
@@ -148,19 +153,32 @@ if($resultCheck >0 ){
 
 ?>
   <label >delete visit:</label>
-            
+           <div>
             <input type="text" name="DeleteVisitId" class="register_form_text" placeholder="ID of visit you want to delete" />
              
             
             <button type="submit" name="submit_delete_visit" class="register_btn"> Delete </button>
-           
+            <button type="submit" name="download_all_visits" class="register_btn"> Download all visits</button>
+
+</div> 
+<?php
+if(isset($_GET["error5"])){
+       if($_GET["error5"]=="emptyinput"){
+           echo "<h3>Empty field!</h3>";
+       }
+       else if($_GET["error5"]=="visitNotExist")
+       {
+        echo "<h3>Visit doesnt exist!</h3>";
+       } 
+    }
+?>
            
             <h1 >Details about detained:</h1>
             <?php
 
 
 // echo "<p>ok</p>";  
-$id=0;
+
 $sql="SELECT * FROM detained;";
 $result=mysqli_query($conn,$sql);
 $resultCheck=mysqli_fetch_assoc($result);
@@ -168,7 +186,7 @@ $resultCheck=mysqli_fetch_assoc($result);
 if($resultCheck >0 ){
 
    while($row=mysqli_fetch_assoc($result)){
-      $id++;
+      
        echo  "<h5> ID: ".$row['detainedId']." , detained name: ".$row['detained_name']." , CNP: ".$row['CNP'].
        " , imprison date: ".$row['imprison_date']." , release date: ".$row['release_date']." , crime: ".$row['crime']." , incidents: ".$row['incidents']." , condemnation: ".$row['condemnation']."</h5><br>";
    }
@@ -177,6 +195,27 @@ if($resultCheck >0 ){
 
 
 
+?>
+
+<div>
+
+            <input type="text" name="detained_name" class="register_form_text" placeholder="name of detained" />
+             
+            
+            <button type="submit" name="detained_data_submit" class="register_btn"> download certain detained visits </button>
+            <button type="submit" name="download_all_detained" class="register_btn"> Download all detained</button>
+
+</div> 
+<?php
+if(isset($_GET["error6"])){
+       if($_GET["error6"]=="emptyinput"){
+           echo "<h3>Empty field!</h3>";
+       }
+       else if($_GET["error6"]=="detainedNotExist")
+       {
+        echo "<h3>Detained doesnt exist!</h3>";
+       } 
+    }
 ?>
 
         </form>
