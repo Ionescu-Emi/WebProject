@@ -15,7 +15,8 @@
 .contact_section h1,.register_section h1 {
     text-align: center;
     color: #ddd;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top:40px;
 }
 
 .contact_section label,.register_section label {
@@ -64,7 +65,7 @@
 
 .contact_btn ,.register_btn{
     float: center;
-    width: 10vw;
+    
     border: 0;
     margin-top: 10px;
     background: #34495e;
@@ -94,7 +95,7 @@ footer{
   height:40em;
 }
 .contact_section{
-  height:150em;
+  height:220em;
 }
 
 .social_menu { 
