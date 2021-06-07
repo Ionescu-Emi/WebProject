@@ -141,7 +141,7 @@ if(detainedExists($conn,$detained_name) ==false){
     exit();
 
 }
-     $sql="SELECT * FROM detained WHERE detained_name='".$detained_name."';";
+     $sql="SELECT * FROM visits WHERE detained_name='".$detained_name."';";
      if(!$result=mysqli_query($conn,$sql)){
          exit(mysqli_error($conn));
      }
@@ -155,7 +155,7 @@ if(detainedExists($conn,$detained_name) ==false){
      header('Content-Type:text/csv;charset=utf-8');
      header('Content-Disposition:attachment; filename=Detained_visits.csv','w');
      $output=fopen('php://output','w');
-     fputcsv($output,array('detained_name','CNP','imprison-date','release-date','crime','incidents','condemnation','detainedId'));
+     fputcsv($output,array('name_visitor','detained_name','relationship','nature','duration','meeting_date','possible_objects','witness_list','visitId'));
      
      if(count($detained)>0){
          foreach($detained as $row){
