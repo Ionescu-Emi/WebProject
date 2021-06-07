@@ -129,13 +129,61 @@ if($resultCheck >0 ){
    }
    
    ?>
-    <h1 >Details about visits:</h1>
+    <h1 >Family visits:</h1>
    <?php
 
 
  // echo "<p>ok</p>";  
 $id=0;
-$sql="SELECT * FROM visits;";
+$sql="SELECT * FROM visits WHERE nature='family_meeting';";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+       $id++;
+        echo  "<h5> ID: ".$row['visitId']." ,    Name: ".$row['name_visitor']." , detained name: ".$row['detained_name']." , relationship: ".$row['relationship'].
+        " , nature: ".$row['nature']." , duration ".$row['duration']." , meeting date: ".$row['meeting_date']." , possible objects: ".$row['possible_objects']." , witness list: ".$row['witness_list']."</h5><br>";
+    }
+}
+
+
+
+
+?>
+
+
+<h1 >Legal Planning  visits:</h1>
+   <?php
+
+
+ // echo "<p>ok</p>";  
+$id=0;
+$sql="SELECT * FROM visits WHERE nature='legal_planning_meeting';";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+       $id++;
+        echo  "<h5> ID: ".$row['visitId']." ,    Name: ".$row['name_visitor']." , detained name: ".$row['detained_name']." , relationship: ".$row['relationship'].
+        " , nature: ".$row['nature']." , duration ".$row['duration']." , meeting date: ".$row['meeting_date']." , possible objects: ".$row['possible_objects']." , witness list: ".$row['witness_list']."</h5><br>";
+    }
+}
+
+
+
+
+?>
+ <h1 >Casual visits:</h1>
+   <?php
+
+
+ // echo "<p>ok</p>";  
+$id=0;
+$sql="SELECT * FROM visits WHERE nature='casual_meeting';";
 $result=mysqli_query($conn,$sql);
 $resultCheck=mysqli_fetch_assoc($result);
 
@@ -189,6 +237,29 @@ if($resultCheck >0 ){
       
        echo  "<h5> ID: ".$row['detainedId']." , detained name: ".$row['detained_name']." , CNP: ".$row['CNP'].
        " , imprison date: ".$row['imprison_date']." , release date: ".$row['release_date']." , crime: ".$row['crime']." , incidents: ".$row['incidents']." , condemnation: ".$row['condemnation']."</h5><br>";
+   }
+}
+
+
+
+
+?>
+<h1 >Top 3 biggest condemnations:</h1>
+            <?php
+
+
+// echo "<p>ok</p>";  
+
+$sql="SELECT * from detained order by condemnation desc limit 4;";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+   while($row=mysqli_fetch_assoc($result)){
+      
+       echo  "<h5> ID: ".$row['detainedId']." , detained name: ".$row['detained_name']." , CNP: ".$row['CNP'].
+       " , imprison date: ".$row['imprison_date']." , release date: ".$row['release_date']." , crime: ".$row['crime']." , incidents: ".$row['incidents']." , CONDEMNATION: ".$row['condemnation']."</h5><br>";
    }
 }
 
