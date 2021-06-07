@@ -9,7 +9,7 @@
     background: #717D7E;
     padding: 40px 0;
     background-size: cover;
-    height:80vh;
+    height:300em;
 }
 
 .contact_section h1,.register_section h1 {
@@ -95,7 +95,7 @@ footer{
   height:40em;
 }
 .contact_section{
-  height:220em;
+  height:300em;
 }
 
 .social_menu { 
