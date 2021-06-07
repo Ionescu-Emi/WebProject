@@ -127,6 +127,81 @@ deleteUser($conn,$nameDelete);
     
     
 
+ }else if(isset($_POST["download_visit_statistics"])){
+    require_once 'dbh.sub.php';
+    require_once 'functions.sub.php';
+   
+   
+    $id1=0;
+    $id2=0;
+    $id3=0;
+    $id4=0;
+    $id5=0;
+    $id6=0;
+    $id7=0;
+    $id8=0;
+    $id9=0;
+    $id10=0;
+    $sql="SELECT * FROM visits ;";
+    $result=mysqli_query($conn,$sql);
+    $resultCheck=mysqli_fetch_assoc($result);
+    
+    if($resultCheck >0 ){
+    
+        while($row=mysqli_fetch_assoc($result)){
+          
+           if($row['duration']=='30_minutes') {
+    
+            $id1++;
+           }
+           if($row['duration']=='60_minutes') {
+    
+            $id2++;
+           }
+           if($row['duration']=='90_minutes') {
+    
+            $id3++;
+           }
+           if($row['relationship']=='relative') {
+    
+            $id4++;
+           }
+           if($row['relationship']=='tutor') {
+    
+            $id5++;
+           }
+           if($row['relationship']=='lawyer') {
+    
+            $id6++;
+           }
+           if($row['relationship']=='friend') {
+    
+            $id7++;
+           }
+           if($row['nature']=='family_meeting') {
+    
+            $id8++;
+           }
+           if($row['nature']=='legal_planning_meeting') {
+    
+            $id9++;
+           }
+           if($row['nature']=='casual_meeting') {
+    
+            $id10++;
+           }
+             }
+             header('Content-Type:text/csv;charset=utf-8');
+             header('Content-Disposition:attachment; filename=Detained_visits.csv','w');
+             $output=fopen('php://output','w');
+             fputcsv($output,array('nr of visits with duration of 30 minutes','nr of visits with duration of 60 minutes','nr of visits with duration of 90 minutes','nr of visits made by relative','nr of visits made by tutor','nr of visits made by lawyer','nr of visits made by friend','nr of family visits','nr of legal planning visits','nr of casual visits'));
+             fputcsv($output,array($id1,$id2,$id3,$id4,$id5,$id6,$id7,$id8,$id9,$id10));
+             
+    
+    }
+
+
+
  }else if(isset($_POST["detained_data_submit"])){
     require_once 'dbh.sub.php';
     require_once 'functions.sub.php';

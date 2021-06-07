@@ -138,6 +138,7 @@ function loginUser($conn,$name,$password){
          
         
         $_SESSION["userName"]=$nameExists["usersName"];
+       
         header("location:../homepage.php");
         exit();
     }

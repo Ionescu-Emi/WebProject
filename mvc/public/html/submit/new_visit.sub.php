@@ -58,6 +58,12 @@ require_once 'functions.sub.php';
        exit();
 
    }
+  /* if(nameExists($conn,$name)==false){
+    header("location:../new_visit.php?error4=insertUsername");
+    exit();
+
+   }
+   */
 
    if(detainedExists($conn,$detained_name) ==false){
     header("location:../new_visit.php?error4=detainedNotExist");
