@@ -86,10 +86,14 @@ if($resultCheck >0 ){
     
         }
 }
+/*
+if (isset($_SESSION['userName'])) {
+    $idUser = $_SESSION['usersName'];
+    echo $userName;
 
+}
 
-
-
+*/
 ?>
  <div>
        <label >delete user:</label>
@@ -200,15 +204,83 @@ if($resultCheck >0 ){
 
 
 ?>
+
+
+<h1 >Statistics about visits:</h1>
+   <?php
+
+
+ // echo "<p>ok</p>";  
+$id=0;
+$id2=0;
+$id3=0;
+$id4=0;
+$id5=0;
+$id6=0;
+$id7=0;
+$sql="SELECT * FROM visits ;";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+      
+       if($row['duration']=='30_minutes') {
+
+        $id++;
+       }
+       if($row['duration']=='60_minutes') {
+
+        $id2++;
+       }
+       if($row['duration']=='90_minutes') {
+
+        $id3++;
+       }
+       if($row['relationship']=='relative') {
+
+        $id4++;
+       }
+       if($row['relationship']=='tutor') {
+
+        $id5++;
+       }
+       if($row['relationship']=='lawyer') {
+
+        $id6++;
+       }
+       if($row['relationship']=='friend') {
+
+        $id7++;
+       }
+         }
+    echo "<h5>number of visits of duration of 30 minutes:</h5>".$id;
+    echo "<h5>number of visits of duration of 60 minutes:</h5>".$id2;
+    echo "<h5>number of visits of duration of 90 minutes:</h5>".$id3;
+    echo "<h5>number of visits made by relative:</h5>".$id4;
+    echo "<h5>number of visits made by tutor:</h5>".$id5;
+    echo "<h5>number of visits made by lawyer:</h5>".$id6;
+    echo "<h5>number of visits made by friend:</h5>".$id7;
+
+}
+
+
+
+?>
   <label >delete visit:</label>
            <div>
             <input type="text" name="DeleteVisitId" class="register_form_text" placeholder="ID of visit you want to delete" />
              
             
             <button type="submit" name="submit_delete_visit" class="register_btn"> Delete </button>
+           
             <button type="submit" name="download_all_visits" class="register_btn"> Download all visits</button>
+       </div>     
+            <button type="submit" name="download_visit_statistics" class="register_btn"> Download visit statistics</button>
 
-</div> 
+
+
 <?php
 if(isset($_GET["error5"])){
        if($_GET["error5"]=="emptyinput"){
@@ -218,7 +290,10 @@ if(isset($_GET["error5"])){
        {
         echo "<h3>Visit doesnt exist!</h3>";
        } 
+
     }
+  //  $id++;
+  //  echo $id;
 ?>
            
             <h1 >Details about detained:</h1>

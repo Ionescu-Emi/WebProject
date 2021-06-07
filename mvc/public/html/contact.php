@@ -67,13 +67,15 @@ session_start();
                 <div class="border_line"></div>
                 <label >name:</label>
                 <input type="text" name="name" class="contact_form_text" placeholder="your name">
-                <label >phone:</label>
-                <input type="number" name="phone" class="contact_form_text" placeholder="your phone" >
                 <label >email:</label>
                 <input type="email" name="email" class="contact_form_text" placeholder="your email" >
+                
+                
+                <label >subject:</label>
+                <input type="number" name="subject" class="contact_form_text" placeholder="your phone" >
                 <label >message::</label>
-                <textarea class="contact_form_text" name="msg" placeholder="Your Message"></textarea>         
-                <button type="submit" name="submit" value="send" class="contact_btn"> Submit</button>
+                <textarea class="contact_form_text" name="message" placeholder="Your Message"></textarea>         
+                <button type="submit" name="submit" value="send" class="contact_btn"> SEND</button>
             
                   
             </form>

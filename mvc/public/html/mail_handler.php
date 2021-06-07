@@ -1,3 +1,7 @@
+<?php
+session_start();
+include_once 'submit/dbh.sub.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -41,15 +45,16 @@
 <?php
 if(isset($_POST['submit'])){
 $name=$_POST['name'];
-$email=$_POST['email'];
-$msg=$_POST['msg'];
-//$name=$_POST['name'];
+$subject=$_POST['subject'];
+$mailFrom=$_POST['email'];
+$message=$_POST['message'];
 
-$to="skydubz9@gmail.com";
-$subject="Form submission";
+$to="fmarius12345@gmail.com";
+
 //$message="Name:".$name."\n"."Email:".$email."\n"."Wrote the following: "."\n".$msg;
-$headers="From:".$email;
-if(mail($to,$subject,$msg,$headers)){
+$headers="From: ".$mailFrom;
+$txt="you have recieved an email from:".$name.".\n\n".$message;
+if(mail($to,$subject,$txt,$headers)){
 echo "<h1>Sent successfull"." ".$name.",we will contact you soon!</h1>";
 
 }else{
@@ -59,9 +64,9 @@ echo "<h1>Sent successfull"." ".$name.",we will contact you soon!</h1>";
 }
 
 ?>
-<button type="submit" name="submit" value="send" class="contact_btn">
+
     <a href="contact.php">
          BACK
     </a>
-</button>
+
 </html>
