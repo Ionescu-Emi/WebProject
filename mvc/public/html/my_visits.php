@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'submit/dbh.sub.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -65,25 +65,60 @@ session_start();
             </ul>
         </nav>
         <div class="contact_section">
-            <h1>CONTACT US</h1>
-            <form class="contact_form" method="post" action="mail_handler.php">
-                <div class="border_line"></div>
-                <label >name:</label>
-                <input type="text" name="name" class="contact_form_text" placeholder="your name">
-                <label >email:</label>
-                <input type="email" name="email" class="contact_form_text" placeholder="your email" >
-                
-                
-                <label >subject:</label>
-                <input type="number" name="subject" class="contact_form_text" placeholder="your phone" >
-                <label >message::</label>
-                <textarea class="contact_form_text" name="message" placeholder="Your Message"></textarea>         
-                <button type="submit" name="submit" value="send" class="contact_btn"> SEND</button>
+
+           <form class='contact_form' action="submit/admin_page.sub.php" method="post">
+           
+            <h1>YOUR VISITS:</h1>
+           
+
+<?php
+ if(isset($_SESSION['userName']))
+ { $user=$_SESSION['userName'];
+    
+} 
+
+$sql="SELECT * FROM visits WHERE name_visitor='".$user."';";
+$result=mysqli_query($conn,$sql);
+$resultCheck=mysqli_fetch_assoc($result);
+
+if($resultCheck >0 ){
+
+    while($row=mysqli_fetch_assoc($result)){
+       
+        echo  "<h5> ID: ".$row['visitId']." ,    Name: ".$row['name_visitor']." , detained name: ".$row['detained_name']." , relationship: ".$row['relationship'].
+        " , nature: ".$row['nature']." , duration ".$row['duration']." , meeting date: ".$row['meeting_date']." , possible objects: ".$row['possible_objects']." , witness list: ".$row['witness_list']."</h5><br>";
+    }
+}
+
+?>
+
+<label >delete visit:</label>
+           <input type="text" name="DeleteVisitId_user" class="register_form_text" placeholder="ID of visit you want to delete" />
+             
             
-                  
-            </form>
+           <div> 
+           <button type="submit" name="submit_delete_visit_user" class="register_btn"> Delete </button>
+           
+           
+           <button type="submit" name="download_user_visits" class="register_btn"> Download your visits</button>
+  </div>
+           <?php
+if(isset($_GET["error7"])){
+       if($_GET["error7"]=="emptyinput"){
+           echo "<h3>Empty field!</h3>";
+       }
+       else if($_GET["error7"]=="visitNotExist")
+       {
+        echo "<h3>Visit doesnt exist!</h3>";
+       } 
+
+    }
+  //  $id++;
+  //  echo $id;
+?>
+</form>
+
         </div>
-        
             <div class="social_menu">
                 <div class="media_button">
                     <a href="#">

@@ -16,40 +16,57 @@ session_start();
 <body>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,600" rel="stylesheet" type="text/css">
     <nav class="navPanel">
-        <ul class="menu_items">
-            <li class="menu_item">
-                <a id="a1" href="homepage.php">
-                    <h5>HOMEPAGE</h5>
-                </a>
-            </li>
-            <li class="menu_item">
-                <a href="new_visit.php">
-                    <h5>NEW VISIT</h5>
-                </a>
-            </li>
-            <li class="menu_item">
-                <a href="register.php">
-                    <h5>REGISTER</h5>
-                </a>
-            </li>
-            <li class="menu_item">
-                <a href="login.php">
-                    <h5>LOGIN</h5>
-                </a>
-            </li>
-            <li class="menu_item">
-                <a href="contact.php">
-                    <h5>CONTACT US</h5>
-                </a>
-            </li> 
+            <ul class="menu_items">
+                <li class="menu_item">
+                    <a id="a1" href="homepage.php">
+                        <h5>HOMEPAGE</h5>
+                    </a>
+                </li>
+                
+               
+                <?php
+    
+    $adminName="admin";
+    if(isset($_SESSION["userName"]))
+    {
+        echo" <li class='menu_item'>
+                        <a href='new_visit.php'>
+                            <h5>NEW VISIT</h5>
+                        </a>
+                    </li> ";
+        echo "<li class='menu_item'><a href='my_visits.php'> <h5>MY VISITS</h5> </a> </li>";
+                
+        echo "<li class='menu_item'><a href='submit/logout.sub.php'> <h5>LOGOUT</h5> </a> </li>";
+    
+         if($_SESSION["userName"]==$adminName)
+    {
+       echo "<li class='menu_item'><a href='admin_page.php'> <h5>ADMIN PAGE</h5> </a> </li>";
+      
+    }
+       }
+       else
+       {
+        echo "<li class='menu_item'><a href='register.php'> <h5>REGISTER</h5> </a> </li>";
+             
+           echo "<li class='menu_item'><a href='login.php'> <h5>LOGIN</h5> </a> </li>";
+    
 
-            <li class="menu_item">
-                <a href="schollarly.html">
-                    <h5>USER GUIDE(schollarly html)</h5>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    }
+   
+   ?>
+                <li class="menu_item">
+                    <a href="contact.php">
+                        <h5>CONTACT US</h5>
+                    </a>
+                </li>
+
+                <li class="menu_item">
+                    <a href="schollarly.html">
+                        <h5>USER GUIDE(schollarly html)</h5>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     <div class="register_section">
         <h1>LOGIN</h1>
 

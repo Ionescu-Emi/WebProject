@@ -74,18 +74,20 @@ include_once 'submit/dbh.sub.php';
                         <h5>HOMEPAGE</h5>
                     </a>
                 </li>
-                <li class="menu_item">
-                    <a href="new_visit.php">
-                        <h5>NEW VISIT</h5>
-                    </a>
-                </li>
+                
  
                 
             <?php
     
              $adminName="admin";
              if(isset($_SESSION["userName"]))
-             {
+             {echo" <li class='menu_item'>
+                <a href='new_visit.php'>
+                    <h5>NEW VISIT</h5>
+                </a>
+            </li> ";
+                echo "<li class='menu_item'><a href='my_visits.php'> <h5>MY VISITS</h5> </a> </li>";
+                
                  echo "<li class='menu_item'><a href='submit/logout.sub.php'> <h5>LOGOUT</h5> </a> </li>";
              
                   if($_SESSION["userName"]==$adminName)

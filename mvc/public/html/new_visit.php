@@ -20,17 +20,19 @@ include_once 'submit/dbh.sub.php';
                             <h5>HOMEPAGE</h5>
                         </a>
                     </li>
-                    <li class="menu_item">
-                        <a href="new_visit.php">
-                            <h5>NEW VISIT</h5>
-                        </a>
-                    </li>
+                   
                    
                     <?php
     
     $adminName="admin";
              if(isset($_SESSION["userName"]))
              {
+                 echo" <li class='menu_item'>
+                        <a href='new_visit.php'>
+                            <h5>NEW VISIT</h5>
+                        </a>
+                    </li> ";
+                 echo "<li class='menu_item'><a href='my_visits.php'> <h5>MY VISITS</h5> </a> </li>";
                  echo "<li class='menu_item'><a href='submit/logout.sub.php'> <h5>LOGOUT</h5> </a> </li>";
              
                   if($_SESSION["userName"]==$adminName)
@@ -66,14 +68,14 @@ include_once 'submit/dbh.sub.php';
             <h1>NEW VISIT</h1>
             <form class="new_visit_form" action="submit/new_visit.sub.php" method="post" >
                 <div class="border_line"></div>
-                <label > full name:</label>
-                <input
-                    type="text"
-                    name="name"
-                    class="new_visit_form_text"
-                    placeholder="your  full name"
-                >
+                
                 <label > detained name:</label>
+                <?php
+               /* if(isset($_SESSION['userName']))
+               { $user=$_SESSION['userName'];
+                  echo $user;  
+              } */ 
+                ?>
                 <input
                     type="text"
                     name="detained_name"
