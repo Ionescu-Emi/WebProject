@@ -198,6 +198,26 @@ if($nameDelete!==$admin){
 
 
 mysqli_stmt_close($statement);
+
+
+$sql2="DELETE FROM visits WHERE name_visitor=?;";
+$statement2=mysqli_stmt_init($conn);
+if(!mysqli_stmt_prepare($statement2,$sql2))
+{
+
+    header("location:../admin_page.php?error2=statementFailed");
+    exit();
+}
+
+
+mysqli_stmt_bind_param($statement2,"s",$nameDelete);
+mysqli_stmt_execute($statement2);
+
+
+mysqli_stmt_close($statement2);
+
+
+
 header("location:../admin_page.php?error2=none");
 exit();
 }

@@ -4,7 +4,7 @@
 
 if(isset($_POST["submit"])){
    // echo 'ok';
-
+   
    $name=$_POST["name"];
    $email=$_POST["email"];
    $password=$_POST["password"];
