@@ -63,12 +63,19 @@ include_once 'submit/dbh.sub.php';
 .register_form_text:hover{
     box-shadow: 0 2px 10px 4px #34495e;
 }
+.profile_pic{
+    height:40px;
+    width:40px;
+    border-radius:50px;
+    margin-left:370px;
+}
         </style>
     </head>
     <body>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,600" rel="stylesheet" type="text/css">
         <nav class="navPanel">
             <ul class="menu_items">
+              
                 <li class="menu_item">
                     <a id="a1" href="homepage.php">
                         <h5>HOMEPAGE</h5>
@@ -113,11 +120,19 @@ include_once 'submit/dbh.sub.php';
                     </a>
                 </li>
                 <li class="menu_item">
-                    <a href="schollarly.php">
-                        <h5>USER GUIDE(schollarly html)</h5>
-                    </a>
-                </li>
+                <a href="userguide_schollarly.html">
+                    <h5>USER GUIDE</h5>
+                </a>
+            </li>
+            <li class="menu_item">
+                <a href="report_schollarly.html">
+                    <h5>REPORT SCHOLLARLY</h5>
+                </a>
+            </li>
+
+            
             </ul>
+            
         </nav>
         <div class="homepage_section">
             <h1>HOMEPAGE</h1>

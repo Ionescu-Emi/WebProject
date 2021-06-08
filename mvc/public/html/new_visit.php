@@ -57,10 +57,16 @@ include_once 'submit/dbh.sub.php';
                         </a>
                     </li>
                     <li class="menu_item">
-                        <a href="schollarly.html">
-                            <h5>USER GUIDE(schollarly html)</h5>
-                        </a>
-                    </li>
+                <a href="userguide_schollarly.html">
+                    <h5>USER GUIDE</h5>
+                </a>
+            </li>
+            <li class="menu_item">
+                <a href="report_schollarly.html">
+                    <h5>REPORT SCHOLLARLY</h5>
+                </a>
+            </li>
+           
                 </ul>
             </nav>
         

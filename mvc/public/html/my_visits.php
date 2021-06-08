@@ -9,6 +9,14 @@ include_once 'submit/dbh.sub.php';
         <title>Contact</title>
         <link rel="stylesheet" href="./css/contact_style.css" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .profile_pic{
+    height:45px;
+    width:45px;
+    border-radius:50px;
+    margin-left:370px;
+}
+        </style>
     </head>
     <body>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,600" rel="stylesheet" type="text/css">
@@ -58,10 +66,16 @@ include_once 'submit/dbh.sub.php';
                 </li>
 
                 <li class="menu_item">
-                    <a href="schollarly.html">
-                        <h5>USER GUIDE(schollarly html)</h5>
-                    </a>
-                </li>
+                <a href="userguide_schollarly.html">
+                    <h5>USER GUIDE</h5>
+                </a>
+            </li>
+            <li class="menu_item">
+                <a href="report_schollarly.html">
+                    <h5>REPORT SCHOLLARLY</h5>
+                </a>
+            </li>
+            
             </ul>
         </nav>
         <div class="contact_section">
