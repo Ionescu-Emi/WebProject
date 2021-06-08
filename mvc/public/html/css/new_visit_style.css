@@ -5,7 +5,12 @@
     font-family: "montserrat", sans-serif;
     
 }
-
+.profile_pic{
+  height:45px;
+  width:45px;
+  border-radius:50px;
+  margin-left:370px;
+}
 .new_visit_section {
     background: #717D7E;
     padding: 40px 0;

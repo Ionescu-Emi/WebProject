@@ -4,12 +4,25 @@
     font-family: "montserrat", sans-serif;
   
 }
+.profile_pic{
+  height:45px;
+  width:45px;
+  border-radius:50px;
+  margin-left:370px;
+}
+.contact_section{
+  background: #717D7E;
+  padding: 40px 0;
+  background-size: cover;
+  height: 450em;
+}
 
-.contact_section,.register_section {
+
+.register_section {
     background: #717D7E;
     padding: 40px 0;
     background-size: cover;
-    height:300em;
+    height:370em;
 }
 
 .contact_section h1,.register_section h1 {
@@ -94,9 +107,7 @@ footer{
 .register_section{
   height:40em;
 }
-.contact_section{
-  height:300em;
-}
+
 
 .social_menu { 
   display:flex;
