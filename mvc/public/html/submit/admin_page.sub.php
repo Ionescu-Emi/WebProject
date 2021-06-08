@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*if(isset($_POST["submit_details"])){
 
     
@@ -91,12 +93,34 @@ deleteUser($conn,$nameDelete);
  
  }
  if(visitExists($conn,$DeleteVisitId)==false){
-     header("location:../admin_page.php?error5=visitNotExist");
+     header("location:../admin_page.php?error7=visitNotExist");
      exit();
  
  }
  
  deleteVisit($conn,$DeleteVisitId);
+ 
+ }
+ else if(isset($_POST["submit_delete_visit_user"])){
+    //echo 'ok';
+    $DeleteVisitId=$_POST["DeleteVisitId_user"];
+  
+ 
+    require_once 'dbh.sub.php';
+    require_once 'functions.sub.php';
+ 
+    if(empty($DeleteVisitId)){
+     header("location:../my_visits.php?error7=emptyinput");
+     exit();
+ 
+ }
+ if(visitExists($conn,$DeleteVisitId)==false){
+     header("location:../my_visits.php?error7=visitNotExist");
+     exit();
+ 
+ }
+ 
+ deleteVisit_user($conn,$DeleteVisitId);
  
  }
  else if(isset($_POST["download_all_visits"])){
@@ -262,6 +286,38 @@ if(detainedExists($conn,$detained_name) ==false){
     
     if(count($detained)>0){
         foreach($detained as $row){
+            fputcsv($output,$row);
+        }
+    }
+    
+    
+
+ } else if(isset($_POST["download_user_visits"])){
+     session_start();
+    require_once 'dbh.sub.php';
+   require_once 'functions.sub.php';
+   if(isset($_SESSION['userName']))
+   { $user=$_SESSION['userName'];
+       
+  }
+    $sql="SELECT * FROM visits WHERE name_visitor='".$user."';";
+    if(!$result=mysqli_query($conn,$sql)){
+        exit(mysqli_error($conn));
+    }
+    $visits=array();
+    if(mysqli_num_rows($result)>0){
+    
+        while($row=mysqli_fetch_assoc($result)){
+            $visits[]=$row;
+        }
+    }
+    header('Content-Type:text/csv;charset=utf-8');
+    header('Content-Disposition:attachment; filename=Visits.csv','w');
+    $output=fopen('php://output','w');
+    fputcsv($output,array('name_visitor','detained_name','relationship','nature','duration','meeting_date','possible_objects','witness_list','visitId'));
+    
+    if(count($visits)>0){
+        foreach($visits as $row){
             fputcsv($output,$row);
         }
     }

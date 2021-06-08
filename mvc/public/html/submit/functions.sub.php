@@ -1,3 +1,5 @@
+
+
 <?php
 
 function emptyInputRegister($name,$email,$password,$password_repeat){
@@ -83,7 +85,7 @@ mysqli_stmt_close($statement);
 
 
 function createUser($conn,$name,$email,$password){
-
+    //createVisit_new_user($conn,$name,'Radu','tutor','family_meeting','30_minutes','01-01-2022','hh','hh');
     $sql="INSERT INTO users (usersName,usersEmail,usersPassword) VALUES (?,?,?);";
     $statement=mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($statement,$sql))
@@ -99,6 +101,28 @@ function createUser($conn,$name,$email,$password){
 
 
 mysqli_stmt_close($statement);
+
+
+
+$sql2="INSERT INTO visits (name_visitor,detained_name,relationship,nature,duration,meeting_date,possible_objects,witness_list) VALUES (?,'Radu','relative','casual_meeting','90_minutes','01-01-2022','vv','vv');";
+$statement2=mysqli_stmt_init($conn);
+if(!mysqli_stmt_prepare($statement2,$sql2))
+{
+
+    header("location:../register.php?error=statementFailed");
+    exit();
+}
+
+
+mysqli_stmt_bind_param($statement2,"s",$name);
+mysqli_stmt_execute($statement2);
+
+
+mysqli_stmt_close($statement2);
+
+
+
+
 header("location:../register.php?error=none");
 exit();
 }
@@ -268,8 +292,28 @@ header("location:../new_visit.php?error4=none");
 exit();
 
 }
+/*function createVisit_new_user($conn,$name,$detained_name,$relationship,$nature,$duration,$date,$possible_objects,$witness_list){
+
+    $sql="INSERT INTO visits (name_visitor,detained_name,relationship,nature,duration,meeting_date,possible_objects,witness_list) VALUES (?,?,?,?,?,?,?,?);";
+    $statement=mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($statement,$sql))
+    {
+
+        header("location:../new_visit.php?error4=statementFailed");
+        exit();
+    }
+   
+
+    mysqli_stmt_bind_param($statement,"ssssssss",$name,$detained_name,$relationship,$nature,$duration,$date,$possible_objects,$witness_list);
+    mysqli_stmt_execute($statement);
 
 
+mysqli_stmt_close($statement);
+
+exit();
+
+}
+*/
 function visitExists($conn,$DeleteVisitId){
     $sql="SELECT * FROM visits WHERE visitId= ?;";
     //daca pun ? in loc de nume tabel,da statement failed
@@ -314,6 +358,24 @@ mysqli_stmt_close($statement);
 header("location:../admin_page.php?error5=none");
 exit();
 }
+function deleteVisit_user($conn,$DeleteVisitId){
+    $sql="DELETE FROM visits WHERE visitId=?;";
+    $statement=mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($statement,$sql))
+    {
 
+        header("location:../my_visits.php?error7=statementFailed");
+        exit();
+    }
+    
+
+    mysqli_stmt_bind_param($statement,"s",$DeleteVisitId);
+    mysqli_stmt_execute($statement);
+
+
+mysqli_stmt_close($statement);
+header("location:../my_visits.php?error7=none");
+exit();
+}
 
 ?>

@@ -1,10 +1,21 @@
 <?php
+session_start();
+
+?>
+
+<?php
 
 if(isset($_POST["button_visit"])){
-    //echo 'ok';
+    /*//echo 'ok';
+    if(isset($_SESSION['userName']))
+               { $user=$_SESSION['userName'];
+                  echo $user;  
+              }
+
+              */
    $nature="";
    $duration="";
-   $name=$_POST["name"];
+   $name=$_SESSION['userName'];
    $detained_name=$_POST["detained_name"];
    $relationship=$_POST["relationship"];
   $day=$_POST["day"];
